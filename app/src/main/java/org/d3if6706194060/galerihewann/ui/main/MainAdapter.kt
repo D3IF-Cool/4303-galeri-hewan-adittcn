@@ -1,4 +1,4 @@
-package org.d3if6706194060.galerihewann
+package org.d3if6706194060.galerihewann.ui.main
 
 
 import android.view.LayoutInflater

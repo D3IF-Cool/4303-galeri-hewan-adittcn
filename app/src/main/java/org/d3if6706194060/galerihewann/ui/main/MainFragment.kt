@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
-import org.d3if6706194060.galerihewann.MainAdapter
 import org.d3if6706194060.galerihewann.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
