@@ -2,4 +2,5 @@
     <string name="app_name">galerihewannn</string>
     <string name="hewan">Hewan</string>
     <string name="namaLatin">nama latin</string>
+    <string name="koneksi_error">Koneksi Error</string>
 </resources>

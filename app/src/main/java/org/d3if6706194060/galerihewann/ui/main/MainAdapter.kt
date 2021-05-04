@@ -4,27 +4,22 @@ package org.d3if6706194060.galerihewann.ui.main
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import org.d3if6706194060.galerihewann.R
 import org.d3if6706194060.galerihewann.databinding.ListItemBinding
 import org.d3if6706194060.galerihewann.model.Hewan
+import org.d3if6706194060.galerihewann.network.HewanApi
 
 
 class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
+
     private val data = mutableListOf<Hewan>()
+
     fun updateData(newData: List<Hewan>) {
         data.clear()
         data.addAll(newData)
         notifyDataSetChanged()
-
-    class ViewHolder(private val binding: ListItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(hewan: Hewan) = with(binding) {
-            namaTextView.text = hewan.nama
-            latinTextView.text = hewan.namaLatin
-            imageView.setImageResource(hewan.imageResId)
-
-        }
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -32,13 +27,18 @@ class MainAdapter : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
         return ViewHolder(binding)
     }
 
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(data[position])
+    }
+
     override fun getItemCount(): Int {
         return data.size
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(data[position])
-    }
+    class ViewHolder(
+        private val binding: ListItemBinding
+    ) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(hewan: Hewan) {
             with(binding) {
                 namaTextView.text = hewan.nama
