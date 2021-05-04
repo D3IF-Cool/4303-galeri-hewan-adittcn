@@ -5,10 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.observe
+import org.d3if6706194060.galerihewann.MainAdapter
 import org.d3if6706194060.galerihewann.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
+    private val viewModel: MainViewModel by lazy {
+        ViewModelProvider(this).get(MainViewModel::class.java)
+    }
+
     private lateinit var binding: FragmentMainBinding
+    private lateinit var myAdapter: MainAdapter
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentMainBinding.inflate(layoutInflater, container, false)
@@ -20,20 +29,11 @@ class MainFragment : Fragment() {
         }
         return binding.root
     }
-    // Biasanya kita mengambil data dari database, atau server.
-    // Tapi karena materi belum sampai, kita buat dummy saja.
-    private fun getData(): List<Hewan> {
-        return listOf(
-            Hewan("Angsa", "Cygnus olor", R.drawable.angsa),
-            Hewan("Ayam", "Gallus gallus", R.drawable.ayam),
-            Hewan("Bebek", "Cairina moschata", R.drawable.bebek),
-            Hewan("Domba", "Ovis ammon", R.drawable.domba),
-            Hewan("Kalkun", "Meleagris gallopavo", R.drawable.kalkun),
-            Hewan("Kambing", "Capricornis sumatrensis", R.drawable.kambing),
-            Hewan("Kelinci", "Oryctolagus cuniculus", R.drawable.kelinci),
-            Hewan("Kerbau", "Bubalus bubalis", R.drawable.kerbau),
-            Hewan("Kuda", "Equus caballus", R.drawable.kuda),
-            Hewan("Sapi", "Bos taurus", R.drawable.sapi),
-        )
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.getData().observe(viewLifecycleOwner, {
+            myAdapter.updateData(it)
+        })
     }
 }
+
