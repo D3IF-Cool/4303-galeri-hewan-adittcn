@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity() {
             setHasFixedSize(true)
         }
     }
+
+
     private fun getData(): List<Hewan> {
         return listOf(
             Hewan("Angsa", "Cygnus olor", R.drawable.angsa),
