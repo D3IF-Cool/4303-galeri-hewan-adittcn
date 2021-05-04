@@ -24,7 +24,7 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintStart_toEndOf="@id/imageView"
-        tools:text="hewan" />
+        tools:text="@string/hewan" />
 
     <TextView
         android:id="@+id/latinTextView"
