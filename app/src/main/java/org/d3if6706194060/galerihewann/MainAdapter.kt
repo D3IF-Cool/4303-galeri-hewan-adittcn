@@ -20,6 +20,7 @@ class MainAdapter(private val data: List<Hewan>)  :
         }
     }
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ListItemBinding.inflate(inflater, parent, false)
