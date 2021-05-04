@@ -2,6 +2,7 @@ package org.d3if6706194060.galerihewann.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import org.d3if6706194060.galerihewann.model.Hewan
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -23,5 +24,8 @@ interface HewanApiService {
 object HewanApi {
     val service: HewanApiService by lazy {
         retrofit.create(HewanApiService::class.java)
+    }
+    fun getHewanUrl(nama: String): String {
+        return BASE_URL + "hewan/$nama.jpg"
     }
 }
